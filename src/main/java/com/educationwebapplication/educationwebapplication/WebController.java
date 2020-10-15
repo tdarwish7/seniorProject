@@ -16,4 +16,9 @@ public class WebController {
     public String login() {
         return "login";
     }
+
+    @RequestMapping("/grades")
+    public String gradeLevels() {
+        return "gradeLevels";
+    }
 }
