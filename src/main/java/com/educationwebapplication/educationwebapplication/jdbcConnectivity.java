@@ -14,7 +14,7 @@ public class jdbcConnectivity {
     jdbcConnectivity() {
         try{
             Connection con=DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/educationWebsite",username,password);
+                    "jdbc:mysql://localhost:3306/educationWebsite", username, password);
             Statement stmt=con.createStatement();
             ResultSet rs=stmt.executeQuery("select * from login");
             while(rs.next())
