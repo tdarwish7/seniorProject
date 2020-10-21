@@ -17,11 +17,15 @@ public class WebController {
         return "login";
     }
 
-
-
+    @RequestMapping("/signup")
+    public String signUp() {
+        return "signUp";
+    }
 
     @RequestMapping("/resources")
     public String resources() {
         return "resources";
     }
+
+
 }
