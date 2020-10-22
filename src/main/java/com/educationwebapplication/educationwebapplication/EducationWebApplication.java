@@ -9,7 +9,7 @@ public class EducationWebApplication {
     public static void main(String[] args) {
         SpringApplication.run(EducationWebApplication.class, args);
 
-        jdbcConnectivity jdbcConnectivity = new jdbcConnectivity();
+
     }
 
 }
