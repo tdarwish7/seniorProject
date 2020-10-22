@@ -1,7 +1,6 @@
 package com.educationwebapplication.educationwebapplication;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class JdbcConnectivity {
 
