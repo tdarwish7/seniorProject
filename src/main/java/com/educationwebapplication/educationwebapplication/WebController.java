@@ -1,11 +1,23 @@
 package com.educationwebapplication.educationwebapplication;
 
-import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 public class WebController {
+
+    JdbcConnectivity jdbcConnectivity = new JdbcConnectivity();
+
+    ArrayList<String> userInfo = new ArrayList<String>();
+
 
     @RequestMapping("/about")
     public String about() {
@@ -19,9 +31,25 @@ public class WebController {
 
 
 
-
     @RequestMapping("/resources")
     public String resources() {
         return "resources";
     }
+
+    @GetMapping("/signup")
+    public String showSignUpForm(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "signUp";
+    }
+
+    @PostMapping("signup")
+    public String addUser(@ModelAttribute("user") User user) {
+        jdbcConnectivity.addUser(user.getfName(), user.getlName(), user.getEmail(),
+                                user.getUserName(), user.getPassword(), user.getGradeLevel());
+        return resources();
+    }
+
+
+
 }
