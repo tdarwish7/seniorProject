@@ -15,7 +15,6 @@ public class JdbcConnectivity {
                         String userName, String password, String gradeLevel) {
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/educationWebsite", username, pass);
-            statement = con.createStatement();
             String sql = "INSERT INTO Users" +
                     "(FirstName, LastName, EmailAddress, UserName, Password, GradeLevel) VALUES( ?, ?, ?, ?, ?, ? )";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -30,7 +29,6 @@ public class JdbcConnectivity {
             e.printStackTrace();
         } finally {
             try {
-                statement.close();
                 con.close();
             } catch (Exception e) {
                 e.printStackTrace();
