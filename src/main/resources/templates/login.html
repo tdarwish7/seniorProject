@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -81,15 +81,15 @@
         <div class="row justify-content-md-center">
             <div class="col-12 col-md-auto">
                 <!-- Default form login -->
-                <form class="text-center border border-light p-5" action="#!">
+                <form class="text-center border border-light p-5" action="#" th:action="@{/login}" method="post" th:object="${user}">
 
                     <p class="h4 mb-4">Sign in</p>
 
                     <!-- Username -->
-                    <input type="text" id="defaultLoginFormUsername" class="form-control mb-4" placeholder="Username">
+                    <input type="text" id="defaultLoginFormUsername" class="form-control mb-4" th:field="*{userName}" placeholder="Username">
 
                     <!-- Password -->
-                    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" th:field="*{password}" placeholder="Password">
 
                     <div class="d-flex justify-content-around">
                         <div>
