@@ -56,7 +56,7 @@ public class WebController {
     public String login(@ModelAttribute("user") User user) {
         boolean loginSucess = jdbcConnectivity.login(user.getUserName(), user.getPassword());
         if(loginSucess)
-            return resources();
+            return "/resources";
         else
             return "/login";
     }
