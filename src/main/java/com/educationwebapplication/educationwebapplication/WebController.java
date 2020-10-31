@@ -24,11 +24,11 @@ public class WebController {
     }
 
     @RequestMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
         return "login";
     }
-
-
 
     @RequestMapping("/resources")
     public String resources(Model model) {
@@ -52,6 +52,13 @@ public class WebController {
         return "resources";
     }
 
-
+    @PostMapping("login")
+    public String login(@ModelAttribute("user") User user) {
+        boolean loginSucess = jdbcConnectivity.login(user.getUserName(), user.getPassword());
+        if(loginSucess)
+            return resources();
+        else
+            return "/login";
+    }
 
 }
