@@ -23,6 +23,11 @@ public class WebController {
         return "about";
     }
 
+    @RequestMapping("/contact")
+    public String contactUs() {
+        return "contact";
+    }
+
     @RequestMapping("/login")
     public String login(Model model) {
         User user = new User();
