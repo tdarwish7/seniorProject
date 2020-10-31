@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 public class WebController {
@@ -27,9 +31,12 @@ public class WebController {
 
 
     @RequestMapping("/resources")
-    public String resources() {
+    public String resources(Model model) {
+        List<Resource> resourceList = jdbcConnectivity.loadResources();
+        model.addAttribute("resourceList", resourceList);
         return "resources";
     }
+
 
     @GetMapping("/signup")
     public String showSignUpForm(Model model) {
@@ -42,7 +49,7 @@ public class WebController {
     public String addUser(@ModelAttribute("user") User user) {
         jdbcConnectivity.addUser(user.getfName(), user.getlName(), user.getEmail(),
                                 user.getUserName(), user.getPassword(), user.getGradeLevel());
-        return resources();
+        return "resources";
     }
 
 

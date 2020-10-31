@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -40,7 +40,7 @@
 
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-12">
+            <div class="col-12" th:if="${not #lists.isEmpty(resourceList)}">
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -52,25 +52,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr th:each="resource : ${resourceList}">
                         <th scope="row">1</th>
-                        <td>Math</td>
+                        <td th:text="${resource.getResourceName()}"></td>
                         <td>www.google.com</td>
                         <td>a course on math</td>
-                        <td><button type="button" class="btn btn-info">Enroll</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Science</td>
-                        <td>www.youtube.com</td>
-                        <td>a course on science</td>
-                        <td><button type="button" class="btn btn-info">Enroll</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Physics</td>
-                        <td>www</td>
-                        <td>a course on physics</td>
                         <td><button type="button" class="btn btn-info">Enroll</button></td>
                     </tr>
                     </tbody>
