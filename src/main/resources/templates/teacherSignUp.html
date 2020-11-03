@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -10,7 +10,9 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Education Website || Login</title>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <title>Education Website || Teacher Sign Up</title>
 </head>
 <body>
     <!-- JQuery -->
@@ -21,7 +23,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-
     <!--Main Navigation-->
     <header>
 
@@ -70,62 +71,77 @@
         </nav>
     </header>
     <!--Main Navigation-->
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-12 col-md-auto">
-                <h1>Education Website Login</h1>
+                <h1>Education Website SignUp</h1>
             </div>
         </div>
     </div>
     <br>
     <br>
-
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-12 col-md-auto">
-                <!-- Default form login -->
-                <form class="text-center border border-light p-5" action="#" th:action="@{/login}" method="post" th:object="${student}">
+                <!-- Default form register -->
+                <form class="text-center border border-light p-5" action="#" >
 
-                    <p class="h4 mb-4">Sign in</p>
+                    <p class="h4 mb-4">Teacher Sign up</p>
 
-                    <!-- Username -->
-                    <input type="text" id="defaultLoginFormUsername" class="form-control mb-4" th:field="*{userName}" placeholder="Username">
-
-                    <!-- Password -->
-                    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" th:field="*{password}" placeholder="Password">
-
-                    <div class="d-flex justify-content-around">
-                        <div>
-                            <!-- Remember me -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-                            </div>
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <!-- First name -->
+                            <input type="text" id="defaultRegisterFormFirstName" class="form-control"   placeholder="First name">
                         </div>
-                        <div>
-                            <!-- Forgot password -->
-                            <a href="">Forgot password?</a>
+                        <div class="col">
+                            <!-- Last name -->
+                            <input type="text" id="defaultRegisterFormLastName" class="form-control"  placeholder="Last name">
                         </div>
                     </div>
 
-                    <!-- Sign in button -->
-                    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <!-- Student name -->
+                            <input type="text" id="defaultRegisterFormUserName" class="form-control" placeholder="User name">
+                        </div>
+                    </div>
 
-                    <!-- Register -->
-                    <p>Not a member?
-                        <a href="">Register</a>
-                    </p>
+                    <!-- E-mail -->
+                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4"  placeholder="E-mail">
 
-                    <!-- Social login -->
-                    <p>or sign in with:</p>
+                    <!-- Password -->
+                    <input type="password" id="defaultRegisterFormPassword" class="form-control"  placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        At least 8 characters and 1 digit
+                    </small>
+
+                    <input type="password" id="defaultRegisterFormSubject" class="form-control"  placeholder="Teaching Subject" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+
+
+
+                    <!-- Sign up button -->
+                    <button class="btn btn-info my-4 btn-block" type="submit">Sign up!</button>
+
+                    <!-- Social register -->
+                    <p>or sign up with:</p>
 
                     <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
                     <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
 
+                    <hr>
+
+                    <!-- Terms of service -->
+                    <p>By clicking
+                        <em>Sign up</em> you agree to our
+                        <a href="" target="_blank">terms of service</a>
                 </form>
-                <!-- Default form login -->
+                <!-- Default form register -->
             </div>
         </div>
     </div>
