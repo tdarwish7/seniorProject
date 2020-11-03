@@ -88,7 +88,7 @@
         <div class="row justify-content-md-center">
             <div class="col-12 col-md-auto">
                 <!-- Default form register -->
-                <form class="text-center border border-light p-5" action="#" th:action="@{/signup}" method="post" th:object="${user}">
+                <form class="text-center border border-light p-5" action="#" th:action="@{/signup}" method="post" th:object="${student}">
 
                     <p class="h4 mb-4">Sign up</p>
 
@@ -105,7 +105,7 @@
 
                     <div class="form-row mb-4">
                         <div class="col">
-                            <!-- User name -->
+                            <!-- Student name -->
                             <input type="text" id="defaultRegisterFormUserName" class="form-control" th:field="*{userName}"  placeholder="User name">
                         </div>
                     </div>

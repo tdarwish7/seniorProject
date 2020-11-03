@@ -1,6 +1,6 @@
 package com.educationwebapplication.educationwebapplication;
 
-public class User {
+public class Student {
 
     /******Private Variables*******/
     private String fName;
@@ -28,7 +28,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Student{" +
                 "fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +
                 ", userName='" + userName + '\'' +

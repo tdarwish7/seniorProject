@@ -28,8 +28,8 @@ public class WebController {
 
     @RequestMapping("/login")
     public String login(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        Student student = new Student();
+        model.addAttribute("user", student);
         return "login";
     }
 
@@ -43,29 +43,27 @@ public class WebController {
 
     @GetMapping("/studentsignup")
     public String userSignUp(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        Student student = new Student();
+        model.addAttribute("student", student);
         return "studentSignUp";
     }
 
     @PostMapping("signup")
-    public String addUser(@ModelAttribute("user") User user) {
-        jdbcConnectivity.addUser(user.getfName(), user.getlName(), user.getEmail(),
-                                user.getUserName(), user.getPassword(), user.getGradeLevel());
+    public String addUser(@ModelAttribute("student") Student student) {
+        jdbcConnectivity.addUser(student.getfName(), student.getlName(), student.getEmail(),
+                                student.getUserName(), student.getPassword(), student.getGradeLevel());
         return "resources";
     }
 
     @GetMapping("/teachersignup")
-    public String teacherSignUp(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+    public String teacherSignUp() {
         return "teacherSignUp";
     }
 
 
     @PostMapping("login")
-    public String login(@ModelAttribute("user") User user) {
-        boolean loginSucess = jdbcConnectivity.login(user.getUserName(), user.getPassword());
+    public String login(@ModelAttribute("user") Student student) {
+        boolean loginSucess = jdbcConnectivity.login(student.getUserName(), student.getPassword());
         if(loginSucess)
             return "/resources";
         else
