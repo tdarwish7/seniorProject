@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,11 +41,11 @@ public class WebController {
     }
 
 
-    @GetMapping("/signup")
-    public String showSignUpForm(Model model) {
+    @GetMapping("/studentsignup")
+    public String userSignUp(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "signUp";
+        return "studentSignUp";
     }
 
     @PostMapping("signup")
@@ -56,6 +54,14 @@ public class WebController {
                                 user.getUserName(), user.getPassword(), user.getGradeLevel());
         return "resources";
     }
+
+    @GetMapping("/teachersignup")
+    public String teacherSignUp(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "teacherSignUp";
+    }
+
 
     @PostMapping("login")
     public String login(@ModelAttribute("user") User user) {
