@@ -42,7 +42,7 @@ public class WebController {
 
 
     @GetMapping("/studentsignup")
-    public String userSignUp(Model model) {
+    public String studentSignUp(Model model) {
         Student student = new Student();
         model.addAttribute("student", student);
         return "studentSignUp";
@@ -62,7 +62,7 @@ public class WebController {
 
 
     @PostMapping("login")
-    public String login(@ModelAttribute("user") Student student) {
+    public String login(@ModelAttribute("student") Student student) {
         boolean loginSucess = jdbcConnectivity.login(student.getUserName(), student.getPassword());
         if(loginSucess)
             return "/resources";
