@@ -14,14 +14,13 @@ public class JdbcConnectivity {
 
     private void select() { };
 
-    public void addUser(String fname, String lname, String email,
+    public void addStudent(String fname, String lname, String email,
                         String userName, String password, String gradeLevel) {
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/educationapp", username, pass);
 
             String sql = "INSERT INTO students" +
                     "(FirstName, LastName, UserName, EmailAddress, PasswordSalt , PasswordHash, StudentGradeLevel) VALUES( ?, ?, ?, ?, ?, ?, ?)";
-//login
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, fname);
             preparedStatement.setString(2, lname);
@@ -30,6 +29,33 @@ public class JdbcConnectivity {
             preparedStatement.setString(5, "test");
             preparedStatement.setString(6, password);
             preparedStatement.setString(7, gradeLevel);
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void addTeacher(String fname, String lname, String email,
+                           String userName, String password, String subject) {
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/educationapp", username, pass);
+
+            String sql = "INSERT INTO teachers" +
+                    "(FirstName, LastName, UserName, EmailAddress, PasswordSalt , PasswordHash, Subject) VALUES( ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, fname);
+            preparedStatement.setString(2, lname);
+            preparedStatement.setString(3, userName);
+            preparedStatement.setString(4, email);
+            preparedStatement.setString(5, "test");
+            preparedStatement.setString(6, password);
+            preparedStatement.setString(7, subject);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

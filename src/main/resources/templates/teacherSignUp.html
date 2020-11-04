@@ -88,38 +88,38 @@
         <div class="row justify-content-md-center">
             <div class="col-12 col-md-auto">
                 <!-- Default form register -->
-                <form class="text-center border border-light p-5" action="#" >
+                <form class="text-center border border-light p-5" action="#" th:action="@{/teachersignup}" method="post" th:object="${teacher}" >
 
                     <p class="h4 mb-4">Teacher Sign up</p>
 
                     <div class="form-row mb-4">
                         <div class="col">
                             <!-- First name -->
-                            <input type="text" id="defaultRegisterFormFirstName" class="form-control"   placeholder="First name">
+                            <input type="text" id="defaultRegisterFormFirstName" class="form-control" th:field="*{fName}" placeholder="First name">
                         </div>
                         <div class="col">
                             <!-- Last name -->
-                            <input type="text" id="defaultRegisterFormLastName" class="form-control"  placeholder="Last name">
+                            <input type="text" id="defaultRegisterFormLastName" class="form-control" th:field="*{lName}"  placeholder="Last name">
                         </div>
                     </div>
 
                     <div class="form-row mb-4">
                         <div class="col">
                             <!-- Student name -->
-                            <input type="text" id="defaultRegisterFormUserName" class="form-control" placeholder="User name">
+                            <input type="text" id="defaultRegisterFormUserName" class="form-control" th:field="*{userName}" placeholder="User name">
                         </div>
                     </div>
 
                     <!-- E-mail -->
-                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4"  placeholder="E-mail">
+                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" th:field="*{email}" placeholder="E-mail">
 
                     <!-- Password -->
-                    <input type="password" id="defaultRegisterFormPassword" class="form-control"  placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                    <input type="password" id="defaultRegisterFormPassword" class="form-control" th:field="*{password}" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                         At least 8 characters and 1 digit
                     </small>
 
-                    <input type="password" id="defaultRegisterFormSubject" class="form-control"  placeholder="Teaching Subject" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                    <input type="text" id="defaultRegisterFormSubject" class="form-control"  th:field="*{subject}"  placeholder="Teaching Subject" aria-describedby="defaultRegisterFormPasswordHelpBlock">
 
 
 

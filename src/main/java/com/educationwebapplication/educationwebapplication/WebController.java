@@ -48,16 +48,25 @@ public class WebController {
         return "studentSignUp";
     }
 
-    @PostMapping("signup")
-    public String addUser(@ModelAttribute("student") Student student) {
-        jdbcConnectivity.addUser(student.getfName(), student.getlName(), student.getEmail(),
+    @PostMapping("studentsignup")
+    public String addStudent(@ModelAttribute("student") Student student) {
+        jdbcConnectivity.addStudent(student.getfName(), student.getlName(), student.getEmail(),
                                 student.getUserName(), student.getPassword(), student.getGradeLevel());
         return "resources";
     }
 
     @GetMapping("/teachersignup")
-    public String teacherSignUp() {
+    public String teacherSignUp(Model model) {
+        Teacher teacher = new Teacher();
+        model.addAttribute("teacher", teacher);
         return "teacherSignUp";
+    }
+
+    @PostMapping("teachersignup")
+    public String addTeacher(@ModelAttribute("teacher") Teacher teacher) {
+        jdbcConnectivity.addTeacher(teacher.getfName(), teacher.getlName(), teacher.getEmail(),
+                teacher.getUserName(), teacher.getPassword(), teacher.getSubject());
+        return "resources";
     }
 
 
