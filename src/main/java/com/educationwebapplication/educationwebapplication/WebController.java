@@ -26,6 +26,11 @@ public class WebController {
         return "contact";
     }
 
+    @RequestMapping("/studentprofile")
+    public String studentProfile() {
+        return "studentProfile";
+    }
+
     @RequestMapping("/login")
     public String login(Model model) {
         Student student = new Student();

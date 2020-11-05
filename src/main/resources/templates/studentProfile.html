@@ -10,10 +10,9 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Education Website || Resources</title>
+    <title>Title</title>
 </head>
 <body>
-
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
@@ -23,46 +22,15 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 
-    <br>
-    <br>
-
     <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-12 col-md-auto">
-                <h3>Courses</h3>
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
             </div>
         </div>
     </div>
-
-    <br>
-    <br>
-
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-12" th:if="${not #lists.isEmpty(resourceList)}">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Course</th>
-                        <th scope="col">Link</th>
-                        <th scope="col">Description</th>
-                        <th scope="col"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="resource : ${resourceList}">
-                        <th scope="row">1</th>
-                        <td th:text="${resource.getResourceName()}"></td>
-                        <td>www.google.com</td>
-                        <td>a course on math</td>
-                        <td><button type="button" class="btn btn-info">Enroll</button></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
 </body>
 </html>
