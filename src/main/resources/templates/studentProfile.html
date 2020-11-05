@@ -10,7 +10,7 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Education Website || Student Profile</title>
 </head>
 <body>
     <!-- JQuery -->
@@ -25,12 +25,55 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
+                <h1>Student Profile</h1>
             </div>
             <div class="col-sm">
             </div>
-            <div class="col-sm">
-            </div>
+
         </div>
+    </div>
+
+    <div class="container my-5 py-5 z-depth-1" >
+
+
+        <!--Section: Content-->
+        <section class="dark-grey-text text-center">
+
+            <h3 class="font-weight-bold pt-4 mb-4 studentResources">Student Resources</h3>
+
+            <h5 class="font-weight-bold font-italic mb-5">All student resources</h5>
+
+            <div class="col-sm" th:if="${not #lists.isEmpty(resourceList)}">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Course</th>
+                        <th scope="col">Link</th>
+                        <th scope="col">Info</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="userResource : ${resourceList}">
+                        <td th:text="${userResource.getResourceName()}"></td>
+                        <td>
+                            <a th:href="${userResource.getResourceLink()}" target="_blank">
+                                <span th:text="${userResource.getResourceLink()}"></span>
+                            </a>
+                        </td>
+                        <td th:text="${userResource.getResourceType()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm">
+                <button type="button" class="btn btn-info">Switch to Curriculum Resources</button>
+            </div>
+
+        </section>
+        <!--Section: Content-->
+
+
     </div>
 </body>
 </html>

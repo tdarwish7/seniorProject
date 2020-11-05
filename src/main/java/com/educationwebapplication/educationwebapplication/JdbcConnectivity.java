@@ -10,9 +10,35 @@ public class JdbcConnectivity {
     private static final String pass = "test2025";
     private Connection con;
     private Statement statement;
-    private List<Resource> resourceList = new ArrayList<>();
 
-    private void select() { };
+    public boolean login(String userName, String password) {
+        ResultSet rs;
+        String dbpassword="";
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/educationapp", username, pass);
+            String sql = "select passwordHash from students where UserName='"+userName+"'";
+            statement = con.createStatement();
+            rs = statement.executeQuery(sql);
+            while(rs.next()) {
+                dbpassword = rs.getString("passwordHash");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                con.close();
+                if(dbpassword.equals(password) )
+                    return true;
+                else
+                    return false;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+
 
     public void addStudent(String fname, String lname, String email,
                         String userName, String password, String gradeLevel) {
@@ -67,14 +93,10 @@ public class JdbcConnectivity {
             }
         }
     }
-// HEAD
-/*****************************************************************/
-
-    /**What can be a stored procedure and what cannot be?**/
-
-/*****************************************************************/
 
     public List<Resource> loadResources() {
+        List<Resource> resourceList = new ArrayList<>();
+
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/educationapp", username, pass);
             Statement statement = con.createStatement();
@@ -83,19 +105,12 @@ public class JdbcConnectivity {
 
             while(rs.next()) {
                 Resource resource = new Resource();
-                resource.setResourceName(rs.getString("CourseName"));
-                resource.setResourceType(rs.getString("CourseType"));
+                resource.setResourceName(rs.getString("ResourceName"));
+                resource.setResourceType(rs.getString("ResourceType"));
                 resource.setResourceGradeLevel(rs.getString("GradeLevel"));
                 resource.setResourceLink(rs.getString("Link"));
                 resourceList.add(resource);
-//                String gradeLevel = rs.getString("GradeLevel");
-//                String courseName = rs.getString("CourseName");
-//                String courseType = rs.getString("CourseType");
-//                String link = rs.getString("Link");
-//                System.out.println(gradeLevel + ", " + courseName + ", " +courseType +
-//                        ", " + link);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -109,36 +124,42 @@ public class JdbcConnectivity {
         return resourceList;
     }
 
+    public List<Resource> loadUserResources() {
+        List<Resource> userResourceList = new ArrayList<>();
 
-
-
-    public boolean login(String userName, String password) {
-        ResultSet rs;
-        String dbpassword="";
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/educationapp", username, pass);
-            String sql = "select passwordHash from students where UserName='"+userName+"'";
-            statement = con.createStatement();
-            rs = statement.executeQuery(sql);
+            Statement statement = con.createStatement();
+
+            ResultSet rs = statement.executeQuery("select * from enrolledresources " +
+                    "RIGHT JOIN resources " +
+                    "ON resources.id = enrolledresources.resourcesID " +
+                    "WHERE enrolledresources.userID = 1");
+
             while(rs.next()) {
-                dbpassword = rs.getString("passwordHash");
+                Resource resource = new Resource();
+                resource.setResourceName(rs.getString("ResourceName"));
+                resource.setResourceType(rs.getString("ResourceType"));
+                resource.setResourceGradeLevel(rs.getString("GradeLevel"));
+                resource.setResourceLink(rs.getString("Link"));
+                userResourceList.add(resource);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         } finally {
             try {
                 con.close();
-                if(dbpassword.equals(password) )
-                    return true;
-                else
-                    return false;
             } catch (Exception e) {
                 e.printStackTrace();
-                return false;
             }
         }
+
+        return userResourceList;
     }
-// login
+
+
+
+
+
 }
 

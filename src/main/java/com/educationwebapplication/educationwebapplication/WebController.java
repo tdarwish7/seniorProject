@@ -26,11 +26,6 @@ public class WebController {
         return "contact";
     }
 
-    @RequestMapping("/studentprofile")
-    public String studentProfile() {
-        return "studentProfile";
-    }
-
     @RequestMapping("/login")
     public String login(Model model) {
         Student student = new Student();
@@ -43,6 +38,13 @@ public class WebController {
         List<Resource> resourceList = jdbcConnectivity.loadResources();
         model.addAttribute("resourceList", resourceList);
         return "resources";
+    }
+
+    @RequestMapping("/studentprofile")
+    public String studentProfile(Model model) {
+        List<Resource> userResourceList = jdbcConnectivity.loadUserResources();
+        model.addAttribute(userResourceList);
+        return "studentProfile";
     }
 
 
@@ -59,6 +61,7 @@ public class WebController {
                                 student.getUserName(), student.getPassword(), student.getGradeLevel());
         return "resources";
     }
+
 
     @GetMapping("/teachersignup")
     public String teacherSignUp(Model model) {
