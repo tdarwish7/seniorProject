@@ -32,6 +32,14 @@ public class WebController {
         model.addAttribute("user", student);
         return "login";
     }
+    @RequestMapping("/curriculums")
+    public String curriculums() {
+        return "curriculums";
+    }
+    @RequestMapping("/teachersearch")
+    public String teacherSearch() {
+        return "teacherSearch";
+    }
 
     @RequestMapping("/resources")
     public String resources(Model model) {
