@@ -22,58 +22,99 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 
+    <br>
+    <br>
+    <br>
+
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <h1>Student Profile</h1>
+                <ul class="list-group">
+                    <li  class="list-group-item active">Name:</li>
+                    <li  class="list-group-item">Grade Level:</li>
+                    <li  class="list-group-item">Find a Teacher</li>
+                </ul>
             </div>
             <div class="col-sm">
+            </div>
+            <div class="col-sm">
+                <ul class="list-group">
+                    <li style="text-align:right;" class="list-group-item active">Add a resource to your list.</li>
+                    <li style="text-align:right;" class="list-group-item">Join a Curriculum</li>
+                    <li style="text-align:right;"  class="list-group-item">Find a Teacher</li>
+                </ul>
             </div>
 
         </div>
     </div>
-
-    <div class="container my-5 py-5 z-depth-1" >
-
-
-        <!--Section: Content-->
-        <section class="dark-grey-text text-center">
-
-            <h3 class="font-weight-bold pt-4 mb-4 studentResources">Student Resources</h3>
-
-            <h5 class="font-weight-bold font-italic mb-5">All student resources</h5>
-
-            <div class="col-sm" th:if="${not #lists.isEmpty(resourceList)}">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">Course</th>
-                        <th scope="col">Link</th>
-                        <th scope="col">Info</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="userResource : ${resourceList}">
-                        <td th:text="${userResource.getResourceName()}"></td>
-                        <td>
-                            <a th:href="${userResource.getResourceLink()}" target="_blank">
-                                <span th:text="${userResource.getResourceLink()}"></span>
-                            </a>
-                        </td>
-                        <td th:text="${userResource.getResourceType()}"></td>
-                    </tr>
-                    </tbody>
-                </table>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul  class="list-group">
+                    <li class="list-group-item active">Current Curriculum:</li>
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                </ul>
             </div>
+            <div class="col-lg-6">
+                <div class="container my-5 py-5 z-depth-1" >
 
-            <div class="col-sm">
-                <button type="button" class="btn btn-info">Switch to Curriculum Resources</button>
+                    <!--Section: Content-->
+                    <section class=" dark-grey-text text-center">
+
+                        <h3 class="font-weight-bold pt-4 mb-4 studentResources">Student Resources</h3>
+
+                        <h5 class="font-weight-bold font-italic mb-5">All student resources</h5>
+
+                        <div class="col-sm" th:if="${not #lists.isEmpty(resourceList)}">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Course</th>
+                                    <th scope="col">Link</th>
+                                    <th scope="col">Info</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="userResource : ${resourceList}">
+                                    <td th:text="${userResource.getResourceName()}"></td>
+                                    <td>
+                                        <a th:href="${userResource.getResourceLink()}" target="_blank">
+                                            <span th:text="${userResource.getResourceLink()}"></span>
+                                        </a>
+                                    </td>
+                                    <td th:text="${userResource.getResourceType()}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-info">Switch to Curriculum Resources</button>
+                        </div>
+
+                    </section>
+                    <!--Section: Content-->
+                </div>
+
             </div>
-
-        </section>
-        <!--Section: Content-->
-
-
+            <div class="col"></div>
+        </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button>Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
 </body>
 </html>
