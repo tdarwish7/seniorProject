@@ -26,12 +26,7 @@ public class WebController {
         return "contact";
     }
 
-    @RequestMapping("/login")
-    public String login(Model model) {
-        Student student = new Student();
-        model.addAttribute("user", student);
-        return "login";
-    }
+
     @RequestMapping("/curriculums")
     public String curriculums() {
         return "curriculums";
@@ -67,7 +62,7 @@ public class WebController {
     public String addStudent(@ModelAttribute("student") Student student) {
         jdbcConnectivity.addStudent(student.getfName(), student.getlName(), student.getEmail(),
                                 student.getUserName(), student.getPassword(), student.getGradeLevel());
-        return "resources";
+        return "studentProfile";
     }
 
 
@@ -85,12 +80,18 @@ public class WebController {
         return "resources";
     }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        Student student = new Student();
+        model.addAttribute("user", student);
+        return "login";
+    }
 
     @PostMapping("login")
-    public String login(@ModelAttribute("student") Student student) {
+    public String loginUser(@ModelAttribute("student") Student student) {
         boolean loginSucess = jdbcConnectivity.login(student.getUserName(), student.getPassword());
         if(loginSucess)
-            return "/resources";
+            return "/studentProfile";
         else
             return "/login";
     }
