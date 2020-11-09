@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,6 +16,8 @@ import java.util.List;
 public class WebController {
 
     JdbcConnectivity jdbcConnectivity = new JdbcConnectivity();
+    ArrayList<String> subjects = new ArrayList<String>();
+
 
     @RequestMapping("/about")
     public String about() {
@@ -48,6 +51,38 @@ public class WebController {
         List<Resource> userResourceList = jdbcConnectivity.loadUserResources();
         model.addAttribute(userResourceList);
         return "studentProfile";
+    }
+
+    @RequestMapping("/resourcesbysubject")
+    public String resourceBySubject(Model model) {
+        List<Resource> ResourceList = jdbcConnectivity.loadResources();
+        for(Resource resource: ResourceList) {
+            String subject = resource.getResourceType();
+            if(!subjects.contains(subject)) {
+                subjects.add(subject);
+            }
+        }
+        model.addAttribute("subjects", subjects);
+        return "resourcesBySubject";
+    }
+
+
+
+    @RequestMapping("/math")
+    public String math() {
+        return "math";
+    }
+    @RequestMapping("/english")
+    public String english() {
+        return "english";
+    }
+    @RequestMapping("/science")
+    public String science() {
+        return "science";
+    }
+    @RequestMapping("/astronomy")
+    public String astronomy() {
+        return "astronomy";
     }
 
 
