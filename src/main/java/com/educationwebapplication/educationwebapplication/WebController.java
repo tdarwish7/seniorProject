@@ -55,14 +55,15 @@ public class WebController {
 
     @RequestMapping("/resourcesbysubject")
     public String resourceBySubject(Model model) {
-        List<Resource> ResourceList = jdbcConnectivity.loadResources();
-        for(Resource resource: ResourceList) {
+        List<Resource> resourceList = jdbcConnectivity.loadResources();
+        for(Resource resource: resourceList) {
             String subject = resource.getResourceType();
             if(!subjects.contains(subject)) {
                 subjects.add(subject);
             }
         }
         model.addAttribute("subjects", subjects);
+        model.addAttribute("resources", resourceList);
         return "resourcesBySubject";
     }
 
